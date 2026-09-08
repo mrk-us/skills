@@ -1,0 +1,6 @@
+interface:
+  display_name: "Debug motion"
+  short_description: "Trace animation resets, replay, jumps, and stutter"
+  default_prompt: "Use $debug-motion to trace this animation defect and make the smallest fix while preserving my current animation values."
+policy:
+  allow_implicit_invocation: true

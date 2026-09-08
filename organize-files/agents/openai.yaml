@@ -1,0 +1,6 @@
+interface:
+  display_name: "Organize files"
+  short_description: "Simplify file ownership without speculative extraction"
+  default_prompt: "Use $organize-files on the requested area. Simplify locally first and move code only when actual ownership or a useful boundary justifies it."
+policy:
+  allow_implicit_invocation: false

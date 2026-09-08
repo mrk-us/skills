@@ -1,0 +1,6 @@
+interface:
+  display_name: "Microcopy"
+  short_description: "Write useful, humane interface copy"
+  default_prompt: "Use $microcopy to write and implement the interface copy for this flow."
+policy:
+  allow_implicit_invocation: true

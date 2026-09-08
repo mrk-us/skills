@@ -1,0 +1,5 @@
+interface:
+  display_name: "Dev project"
+  short_description: "Scaffold a project with the preferred stack"
+policy:
+  allow_implicit_invocation: true
