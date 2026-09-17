@@ -2,9 +2,10 @@
 name: code-review
 description: >-
   Review code for correctness, simplicity, unnecessary comments, slop, file
-  ownership, and repository standards. Use for requested reviews of files,
-  changes, PRs, commits, or thread work. Ordinary implementation and cleanup
-  requests use implement.
+  ownership, and repository standards when a code-quality assessment or
+  actionable review findings are requested. Exclude investigations that only
+  summarize functionality, explain behavior, or inventory changes in branches,
+  PRs, commits, or files. Ordinary implementation and cleanup requests use implement.
 ---
 
 # Code review
@@ -12,6 +13,18 @@ description: >-
 Find concrete improvements toward the simplest clear implementation that meets the requirements. Prefer removing unnecessary work and indirection. Fewer lines are useful when they preserve intent, readability, and needed safeguards. An adequate implementation needs no cleanup finding.
 
 Apply fixes only when requested. A request to review and fix authorizes corrections within the selected scope.
+
+## Decide whether a review is needed
+
+Choose by the requested deliverable. Reading code or a diff, inspecting a PR, or investigating a branch does not by itself call for a code review. Use this skill for a requested code-quality assessment or a review required by repository instructions.
+
+| Request | Handling |
+| --- | --- |
+| "What does this branch touch? What's changed?" | Explain affected areas and behavior changes without invoking this skill. |
+| "Investigate this PR and summarize its functionality." | Trace and summarize the functionality without invoking this skill. |
+| "Review this PR for bugs and unnecessary complexity." | Use this skill to evaluate the changes and report actionable findings. |
+
+If this skill was loaded for an explanation-only request, stop applying the review workflow and answer the original question. For a combined summary and review request, apply the review workflow only to the requested assessment.
 
 ## Establish the scope
 
