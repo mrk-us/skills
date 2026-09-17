@@ -1,0 +1,6 @@
+interface:
+  display_name: "File structure"
+  short_description: "Simplify file ownership without speculative extraction"
+  default_prompt: "Use $file-structure to place or reorganize code in the requested area by actual ownership, keeping changes within the existing project conventions and task scope."
+policy:
+  allow_implicit_invocation: true

@@ -47,6 +47,16 @@ For component and state-specific guidance, read [references/interface-patterns.m
 - Use progressive disclosure for secondary detail. Keep information required for success visible.
 - Let routine controls use familiar labels. Spend richer copy on uncertain, high-value, or high-risk moments.
 
+For a button that deletes a project:
+
+**BAD**
+
+> Continue
+
+**GOOD**
+
+> Delete project
+
 For friction analysis, preventive copy, complex systems, and implementation checks, read [references/friction-and-systems.md](references/friction-and-systems.md).
 
 ## Preserve agency and trust
@@ -55,15 +65,9 @@ Motivate with relevant value and honest reassurance. Invite action instead of pr
 
 Never shame refusal, hide a consequence, disguise an ad, create false scarcity, or make the unwanted choice harder to understand. In errors, security, payments, privacy, data loss, health, and urgent situations, be calm and literal.
 
-## Deliver the work
-
-When drafting, provide final, implementation-ready strings grouped by screen, component, or state. Include placement or trigger notes only when needed to make the copy unambiguous. Offer variants only when they represent a real tone or product decision.
+## Verify and hand off
 
 When implementing, keep microcopy changes within the requested UI scope. Preserve the product's source of truth for terminology and translations. Cover the relevant default, loading, empty, success, error, disabled, and permission states rather than treating the happy path as the whole interaction.
-
-When reviewing, report each actionable issue with its location, current copy, proposed replacement, and the user consequence. Consolidate repeated issues. Separate verified behavior from checks that were not run.
-
-## Final check
 
 Before finishing, confirm that every changed string:
 
@@ -74,3 +78,7 @@ Before finishing, confirm that every changed string:
 - appears early enough to guide the decision or prevent the error;
 - remains clear at narrow widths and with dynamic values, plural forms, and translations when applicable;
 - has been checked in every changed state that can be inspected with the user's authorized verification methods.
+
+When drafting, provide final, implementation-ready strings grouped by screen, component, or state. Include placement or trigger notes only when needed to make the copy unambiguous. Offer variants only when they represent a real tone or product decision.
+
+When reviewing, report each actionable issue with its location, current copy, proposed replacement, and the user consequence. Consolidate repeated issues. Separate verified behavior from checks that were not run.

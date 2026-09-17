@@ -9,22 +9,29 @@ disable-model-invocation: true
 
 A prose-revision skill: apply a restrained narrative-nonfiction voice to whatever text or topic the user gives you. The style is literary but grounded, combining a journalist's rigor with a novelist's pacing. It works on any subject matter, not just archaeology or expedition writing. The technique transfers to bios, business writing, essays, and more.
 
-## When applying this skill
+## Establish the source material
 
 1. Identify the raw material: a topic to write from scratch or existing text to rewrite.
 2. Preserve the source's facts, quotes, meaning, audience, and constraints unless the user asks you to change them. Never invent events, observations, quotations, or certainty for atmosphere.
 3. Find the strongest possible "cold open", a concrete scene, image, or moment, even in mundane material. If the source does not support a scene, open on the most precise physical fact available instead.
 4. Draft using the sentence-level and structural rules below.
-5. Run the self-check before delivering.
-6. Return the finished prose without a process preamble unless the user asks for explanation. If asked to explain your choices, point to specific techniques from "Annotate on request" rather than vague style talk.
 
-## Core identity of the voice
+## Choose the voice and tone
 
 - Confident, plain-spoken, quietly skeptical, understated. Never showy.
 - Trusts concrete, physical, sensory detail over abstraction or adjectives.
 - Moves fluidly between immediate scene and background context, but never mid-sentence. Switch only at clean breaks.
 - Dry, self-deprecating humor is welcome. Never mock the subject.
 - States facts plainly and flags speculation as speculation.
+
+| Element | Approach |
+|---|---|
+| Danger or stakes | Reported plainly; let facts carry weight, not adjectives |
+| Technical or complex material | Explained clearly, never dumbed down or jargon-heavy |
+| Loss, difficulty, or tragedy | Treated with gravity and specificity, using named particulars rather than generalities |
+| Wonder or impressiveness | Earned through detail, not adjectives |
+| Institutions or bureaucracy | Mild, dry skepticism |
+| Uncertainty | Stated honestly and distinguished clearly from established fact |
 
 ## Structural rules
 
@@ -48,17 +55,6 @@ A prose-revision skill: apply a restrained narrative-nonfiction voice to whateve
   - Use one metaphor per sentence, never stacked. It should be load-bearing, teaching the reader something true about scale, texture, or mechanism, not decorative. If removing it loses no real information, cut it.
 - **Dry humor**, when used, is understated and usually self-deprecating or aimed at bureaucratic or institutional absurdity. Never aim it at people or subjects being written about with sincerity.
 
-## Tone calibration
-
-| Element | Approach |
-|---|---|
-| Danger or stakes | Reported plainly; let facts carry weight, not adjectives |
-| Technical or complex material | Explained clearly, never dumbed down or jargon-heavy |
-| Loss, difficulty, or tragedy | Treated with gravity and specificity, using named particulars rather than generalities |
-| Wonder or impressiveness | Earned through detail, not adjectives |
-| Institutions or bureaucracy | Mild, dry skepticism |
-| Uncertainty | Stated honestly and distinguished clearly from established fact |
-
 ## Recurring thematic instincts
 
 Use these when relevant. Don't force them.
@@ -68,7 +64,9 @@ Use these when relevant. Don't force them.
 - The gap between story, legend, or reputation and what the evidence actually shows.
 - Consequences that outlast the immediate achievement or event.
 
-## Self-check before delivering output
+## Verify and deliver
+
+Run the self-check before delivering.
 
 - [ ] Does it preserve the source's meaning, facts, quotes, audience, and constraints?
 - [ ] Did I avoid inventing scenes, sensory observations, quotations, or certainty?
@@ -81,6 +79,8 @@ Use these when relevant. Don't force them.
 - [ ] Is uncertainty, if any, distinguished from fact?
 - [ ] Does it end on a resonant detail or wider point rather than a flat summary?
 
-## Annotate on request
+Return the finished prose without a process preamble unless the user asks for explanation. If asked to explain your choices, point to specific techniques from "Annotate on request" rather than vague style talk.
+
+**Annotate on request**
 
 If the user asks *why* something was written a certain way, point to the specific technique from this file by name, such as "cold open," "expert digression," "load-bearing metaphor," or "avoided the epigram ending." Keep annotations short, with one line per choice rather than a full essay, unless asked for more depth.
