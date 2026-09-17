@@ -8,14 +8,15 @@ description: >-
 
 Use the laws as diagnostic lenses for interface decisions. They explain likely user behavior, but they are not a checklist and do not override user research, accessibility requirements, product constraints, or direct evidence.
 
-## Work within the task
+## Choose useful principles
 
 1. Identify the user's goal, the decisions they must make, and the controls or content involved in the requested work.
 2. Read the relevant sections of [the laws reference](references/laws.md). Use only the laws that explain a concrete issue or support a concrete design choice.
 3. Prefer the smallest change that reduces effort, uncertainty, delay, or error while preserving required behavior and the project's existing patterns.
-4. Verify the affected path at the level authorized by the task. Do not expand a focused implementation into a broad UX audit.
 
-For ordinary implementation, one to three strong principles are usually enough. Name a law in the user-facing explanation only when the name improves the decision. Otherwise, explain the user effect in plain language.
+For ordinary implementation, one to three strong principles are usually enough.
+
+This skill owns the behavioral rationale for an interface decision. Let narrower skills own their implementation details, including accessibility, layout, typography, color, copy, animation, and component mechanics. When another skill supplies a stricter requirement, follow it and use the relevant UX law only to explain the user impact.
 
 ## Resolve competing principles
 
@@ -33,6 +34,8 @@ Do not use psychological principles to hide material information, manufacture ur
 
 Values such as `7 +/- 2` items or a `400ms` response are memorable heuristics, not universal acceptance criteria. Consider task complexity, user expertise, device, input method, frequency of use, and measured behavior before turning a reference value into a requirement.
 
-## Coordinate with other design guidance
+## Verify and explain the result
 
-This skill owns the behavioral rationale for an interface decision. Let narrower skills own their implementation details, including accessibility, layout, typography, color, copy, animation, and component mechanics. When another skill supplies a stricter requirement, follow it and use the relevant UX law only to explain the user impact.
+Verify the affected path at the level authorized by the task. Do not expand a focused implementation into a broad UX audit.
+
+Name a law in the user-facing explanation only when the name improves the decision. Otherwise, explain the user effect in plain language.

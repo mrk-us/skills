@@ -1,190 +1,83 @@
 ---
 name: code-review
-description: Review the current PR, the last X commits, or a specified thread for slop, correctness, and unnecessary complexity. Use when asked to "review" code, PR's, commits, or general web development work.
+description: >-
+  Review code for correctness, simplicity, unnecessary comments, slop, file
+  ownership, and repository standards. Use for requested reviews of files,
+  changes, PRs, commits, or thread work. Ordinary implementation and cleanup
+  requests use implement.
 ---
 
 # Code review
 
-Ask of every change:
+Find concrete improvements toward the simplest clear implementation that meets the requirements. Prefer removing unnecessary work and indirection. Fewer lines are useful when they preserve intent, readability, and needed safeguards. An adequate implementation needs no cleanup finding.
 
-- Does this solve the actual problem and preserve required behavior?
-- Does this leave the codebase better off than when you found it?
-- Is this the simplest solution within the existing design?
-- Can this be achieved in less code?
-- Does each new abstraction, dependency, fallback, and test earn its place?
+Apply fixes only when requested. A request to review and fix authorizes corrections within the selected scope.
 
-Judge simplicity by ease of understanding and maintenance. Recommend fewer lines only when they preserve intent and useful safeguards. Report concrete improvements; an adequate implementation needs no cleanup finding. Apply fixes only when requested.
+## Establish the scope
 
-## Process
+Verify the checkout, branch, and working tree. Honor the requested file, component, or change before choosing a broader scope. Without a specified scope, use the current PR or, without one, attributable current-thread work.
 
-### 1. Set the scope
+- **Files or components:** inspect the named code and relevant callers without expanding into unrelated cleanup.
+- **PR:** verify the target, base and head SHAs, commits, and changed files. Review the full provider diff or `git diff <base-sha>...<head-sha>`. Use the actual PR head, which may differ from local HEAD.
+- **Last X commits:** verify a positive X and sufficient history; review `git diff HEAD~X HEAD`. X counts first-parent commits. Compare against the empty tree when the selection includes the root commit.
+- **Thread:** use messages, accepted decisions, tool history, and current files to identify attributable work across turns and repositories, including committed and uncommitted changes.
 
-Verify the checkout, branch, and working tree. Use the requested mode, defaulting to the current PR or, without one, attributable current-thread work. Derive comparison refs yourself.
+Exclude unrelated work and, in PR or commit mode, uncommitted changes unless requested. Ask only when missing context prevents establishing scope. State remaining gaps; stop if there is no code or change to review.
 
-- **PR:** verify the target, base and head SHAs, commits, and changed files. Review the full provider diff or `git diff <base-sha>...<head-sha>`. Use the PR head, which may differ from local `HEAD`.
-- **Last X commits:** verify a positive X and sufficient history; review `git diff HEAD~X HEAD`. With merges, state that X counts first-parent commits. Compare against the empty tree if the selection includes the root commit.
-- **Thread:** use messages, accepted decisions, tool history, and current files to identify all attributable work, including earlier turns, involved repositories, and committed or uncommitted changes. Separate pre-existing and unrelated edits using starting-state and hunk evidence.
+## Review the code
 
-Exclude uncommitted work from PR and commit modes unless requested. Record the file inventory and refs or thread evidence. Ask for missing context if scope cannot be established; report any remaining gaps. Stop if the scope is empty.
+Read repository instructions, relevant neighboring code, and the latest accepted requirements. Apply repository standards over general preferences. Inspect every scoped file and logical change, following inputs, state, side effects, and failure paths through relevant callers, tests, and configuration. Check required behavior, regressions, and unnecessary scope additions alongside the quality criteria below.
 
-### 2. Gather requirements and standards
+Validate candidate findings against current code and their concrete consequences. For simplification findings, identify a smaller or clearer alternative and why it improves the actual flow. Discard unsupported findings and unrelated pre-existing issues.
 
-Read repository instructions, coding standards, and relevant neighboring code. Establish requirements from the latest accepted decisions, supplied specs, PR description, and linked issues. Resolve material conflicts; mark Spec unassessed if requirements are unavailable.
+### Simplicity and ownership
 
-Invoke [organize-files](../organize-files/SKILL.md) as review guidance for file ownership and placement. Apply documented repository rules over general preferences. Let tooling handle mechanical formatting and lint checks.
+Look for unnecessary wrappers, forwarding functions, intermediate objects, repeated transformations, duplicated decisions, and abstractions, dependencies, or compatibility paths without a current purpose. Simplify locally before introducing another abstraction. Keep boundaries that carry real policy, domain meaning, or dependency isolation.
 
-### 3. Review and verify
+Keep single-use helpers near their consumer and responsibilities with their owner. Extract for a present shared responsibility or a meaningful boundary; similar syntax and smaller files alone do not justify it. Follow existing layout and preserve self-contained examples. Read [file-structure](../file-structure/SKILL.md) for guidance when ownership, placement, or extraction needs deeper review.
 
-Run two passes, using parallel sub-agents when available. Give both the same scope and source evidence:
+### Comments
 
-- **Standards:** work through every subsection and individual criterion under Review checks, including its exceptions and preservation guidance. Apply repository rules and organize-files guidance.
-- **Spec:** check for missing behavior, incorrect implementation, regressions, and unnecessary scope additions. Allow supporting work needed to meet requirements.
+Remove redundant narration, stale code, speculative TODOs, and references to the agent conversation or generation process. Keep concise explanations of non-obvious reasons, domain rules, invariants, platform quirks, security, performance, and compatibility constraints, including necessary safety justifications and actionable TODOs.
 
-Keep coverage notes keyed to the Review checks criteria. For each criterion, record `checked` with inspected files or evidence and any finding, `not applicable` with a scope-based reason, or `unassessed` with the blocker. A category-level tick alone does not establish coverage of its criteria.
+Rewrite useful information out of conversational wording. Product terms such as user, assistant, and chat are valid when they describe the application.
 
-For each logical change, answer all five opening questions in the review notes; group related hunks across files when they implement one change. Compare the implementation with a concrete simpler alternative where one exists, and record why to simplify or retain it. Assess each introduced abstraction, dependency, fallback, and test by the current requirement or useful safeguard it serves. Route behavior and scope findings to Spec, and simplicity and maintainability findings to Standards.
-
-Account for every scoped file. Trace inputs, state changes, side effects, and failure paths through relevant callers, tests, and configuration. Verify candidate findings against current code and concrete consequences; discard unsupported, resolved, or unrelated pre-existing issues.
-
-Run focused non-destructive checks where useful. Browser or computer control requires explicit authorization. Recheck files or refs that change during review. Record coverage gaps and unverified behavior.
-
-Before reporting, reconcile the file inventory, criterion coverage, and opening-question assessments. If delegating, collect this evidence from both passes and resolve omissions yourself. Complete the review only when every scoped file and logical change is accounted for and every criterion is checked or justified as not applicable. If blockers leave anything unassessed, report the review as partial and identify the gaps.
-
-### 4. Report findings
-
-State the scope, then present separate `Standards` and `Spec` sections ordered by impact. Each finding needs a file and line reference, evidence, consequence, and the smallest useful correction. Cite the rule or requirement and distinguish violations from judgment calls. Cross-reference overlapping findings; report tooling failures once.
-
-Say when a pass has no findings or could not be assessed. Include a compact coverage summary for every Review checks subsection, the outcome of the opening-question assessments, checks run, and verification gaps. Keep detailed coverage notes out of the findings list; a completed check does not require a finding. A passing build does not verify appearance or interaction.
-
-## Review checks
-
-### Structure and simplicity
-
-Look for unnecessary wrappers, forwarding functions, intermediate objects, repeated transformations, duplicated branches, speculative compatibility code, and extensibility without a current requirement. Prefer deleting unnecessary work or simplifying locally before introducing another abstraction.
-
-Keep these code-smell heuristics from the existing review baseline, but require evidence of a real cost:
-
-- **Mysterious name:** the name hides the responsibility or domain meaning.
-- **Duplicated code:** repeated logic represents the same responsibility and should change together. Similar syntax alone does not justify sharing.
-- **Feature envy:** behavior depends on another owner's data and would be clearer beside that owner.
-- **Data clumps:** fields repeatedly travel together because they represent one concept.
-- **Primitive obsession:** broad primitive values obscure a meaningful domain contract.
-- **Repeated switches:** the same decision is maintained in several places and could have one clear owner.
-- **Shotgun surgery:** one responsibility requires scattered edits because ownership is fragmented.
-- **Divergent change:** one module mixes unrelated responsibilities.
-- **Speculative generality:** parameters, hooks, or abstractions serve hypothetical requirements.
-- **Message chains:** callers navigate internal details they should not need to know.
-- **Middle man:** a layer delegates without adding a useful policy, boundary, or meaning.
-- **Refused bequest:** inheritance forces implementations to ignore or undo the inherited contract.
-
-Suggest extraction, sharing, or composition only when it makes the actual flow simpler. Keep abstractions that encode a real boundary, policy, dependency seam, or domain concept.
-
-### Type slop
-
-Look for:
-
-- chained type assertions;
-- `as unknown as T`, `as any as T`, or equivalent laundering;
-- known values widened to `unknown`, `any`, `object`, `{}`, broad `Record`, or anonymous containers and later narrowed again;
-- unnecessary explicit annotations that discard useful inference;
-- `Record<string, unknown>` or similarly broad dictionaries where a concrete owner/domain type exists;
-- `unknown` propagated deep into application code instead of being parsed at an I/O boundary;
-- ad-hoc `typeof`, `in`, or shape checking spread through business logic where a boundary parser would be clearer;
-- assertions used instead of narrowing, parsing, inference, `satisfies`, or a better API contract;
-- aliases that merely hide `unknown`, `any`, `object`, or broad dictionary types.
-
-Prefer:
-
-- inference;
-- `as const` where literal preservation is intentional;
-- `satisfies` where a value should be checked without widening;
-- named domain/owner types;
-- parsing untrusted data once at the boundary;
-- preserving precise types through the full local flow.
-
-Do not mechanically replace every `unknown`, `typeof`, or assertion. They are valid at real boundaries and in legitimate type guards. Judge them by information flow and context.
-
-### Comment hygiene
-
-Keep comments that help future developers understand information not obvious from the code.
-
-Preserve or improve comments that explain:
-
-- why a non-obvious implementation is necessary;
-- external API, browser, framework, platform, or protocol quirks;
-- business or domain rules;
-- invariants and assumptions;
-- security or privacy constraints;
-- performance trade-offs;
-- compatibility requirements;
-- unusual implementation choices;
-- known limitations with a concrete reason;
-- actionable TODO/FIXME items tied to real work;
-- `SAFETY:` justifications for unavoidable type assertions.
-
-Remove or rewrite comments that:
-
-- mention the prompt, user, assistant, chat, conversation, previous request, or instructions;
-- say things such as "as requested", "as discussed", "you mentioned", "we decided", or "per your instructions";
-- explain what the generating AI chose rather than why the code itself exists;
-- narrate obvious syntax or control flow;
-- restate the function or variable name in prose;
-- contain tutorial-style explanations inappropriate for the surrounding codebase;
-- contain speculative TODOs with no concrete requirement;
-- describe changes relative to an earlier version instead of documenting the resulting implementation;
-- tell a future AI what not to modify.
-
-When an AI-shaped comment contains useful information, rewrite it rather than deleting it.
-
-Example:
+**BAD**
 
 ```ts
 // We need this because, as you mentioned, Stripe can send the same event more than once.
 ```
 
-becomes:
+**GOOD**
 
 ```ts
 // Stripe may deliver the same event more than once; processing must remain idempotent.
 ```
 
-### Testing slop
+### Types and names
 
-Look for:
+Preserve useful inference and precise domain types. Parse untrusted data at the boundary. Flag assertion chains, `any`/`unknown` laundering, broad dictionaries replacing known contracts, and repeated shape checks in business logic. Keep legitimate boundary types, type guards, and necessary assertions; use narrowing, `satisfies`, or a better contract when they remove the need for an assertion.
 
-- excessive module mocking;
-- `vi.mock`, `jest.mock`, or equivalent where a real dependency seam is practical;
-- tests coupled to implementation details instead of observable behavior;
-- assertions that cannot fail meaningfully;
-- giant setup blocks created by generated abstractions;
-- duplicated test setup that obscures scenarios;
-- tests for trivial language/framework behavior rather than project behavior;
-- snapshots used where a focused assertion is clearer.
+Choose concise names from the surrounding domain. Rename only when meaning becomes clearer; familiar local names do not need mechanical expansion.
 
-Prefer real interfaces, injected dependencies, lightweight fakes, and behavior-level assertions.
+### Errors and tests
 
-Do not rewrite a stable, established testing architecture merely to satisfy a preference. Focus on slop introduced in the selected scope.
+Flag swallowed errors, catch-and-rethrow without value, invented fallback state, unjustified defensive branches, and duplicate logging. Preserve useful context, boundary translation, cleanup, retries, and security-sensitive redaction.
 
-### Error-handling slop
+Tests should protect observable project behavior with meaningful assertions and proportionate setup. Prefer real interfaces or lightweight fakes where practical. Flag excessive mocking, implementation-coupled assertions, redundant snapshots, and tests of trivial framework behavior. Preserve established test architecture unless it causes a concrete problem in scope.
 
-Look for:
+## Verify and report
 
-- swallowed errors;
-- catch-and-rethrow without added context;
-- generic "Something went wrong" errors replacing useful underlying information;
-- impossible fallback values that let invalid state continue;
-- redundant `try` blocks;
-- defensive branches added without evidence;
-- logging plus rethrowing that causes duplicate logs.
+Scale verification and independent review to the scope and risk. Use additional reviewers only when independent inspection adds value and delegation is allowed. Share the same scope and evidence and reconcile their findings. Run focused non-destructive checks where useful, reuse applicable results, and recheck files or refs that change during review. Browser or computer control requires explicit authorization.
 
-Preserve intentional boundary translation, cleanup/finally behavior, retry policy, and security-sensitive redaction.
+State the scope and present actionable findings ordered by impact. Each needs a file and line, evidence, consequence, and the smallest useful correction. Distinguish repository-rule violations from judgment calls. Use separate Standards and Spec sections only when they help.
 
-### Naming and prose slop
+**BAD**
 
-Look for generic generated names such as:
+> This helper is overengineered. Refactor it.
 
-- `data`, `item`, `result`, `handler`, `manager`, `processor`, `helper`, `utils`, `shape`, or `config` when a domain-specific name is available;
-- long names that encode implementation steps rather than domain meaning;
-- verbose error messages, docstrings, or UI copy created from chat-like prose.
+**GOOD**
 
-Rename only when the surrounding code provides clear evidence of the intended domain term.
+> order-labels.ts:18 creates temporary objects only to read their label field in a second map. Map directly to the label to remove the extra allocation and transformation.
+
+Finish with checks run and verification gaps. Say when there are no findings. Mark the review partial when any scoped file, required behavior, or material concern remains unassessed, and identify it. A passing build does not verify appearance or interaction. Keep detailed coverage notes conditional on the request or review complexity.

@@ -5,9 +5,17 @@ description: File a concise pull request. Use when the user asks to file, open, 
 
 # File PR
 
-Before filing, confirm the repository, head branch, and intended base branch. Check for an open PR with that head and base; update it if one exists. Fetch the base branch from its remote, then review the full PR diff locally against that base. Confirm that every changed file belongs to the requested scope and that the diff delivers the intended change.
+Create or update a pull request that explains the problem and resulting change.
 
-Default to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). Include a scope when it helps identify the affected area, such as `feat(sidebar):`. Use `!` before the colon for a breaking change.
+## Establish scope and requirements
+
+Before filing, confirm the repository, head branch, and intended base branch. Check for an open PR with that head and base; update it if one exists. Fetch the base branch from its remote, then review the full PR diff locally against that base.
+
+Read any repository contribution guidance and the applicable PR template before preparing the PR. Follow their requirements for content, validation, and supporting evidence, including before/after screenshots when required.
+
+## Write the title
+
+Include a scope when it helps identify the affected area, such as `feat(sidebar):`. Use `!` before the colon for a breaking change.
 
 Choose the type that matches the PR's main purpose. Common types are:
 
@@ -33,6 +41,8 @@ Write a concise, human-readable title that states the problem solved or the usef
 
 > feat: keep sidebar sections compact with a five-item preview
 
+## Write the description
+
 Open the description with a simple summary, including the initial problem and what this PR added to solve it. Do not mention the prompt, user, assistant, chat, conversation, previous request, or instructions. Use ASD-STE100 Simplified Technical English:
 
 **BAD**
@@ -43,4 +53,8 @@ Open the description with a simple summary, including the initial problem and wh
 
 > Long sidebar sections pushed other sections out of view. Each section now shows up to five items, with a "View more" option to reveal the rest.
 
-Open a real PR, not a draft. Drafts do not get review-bot coverage.
+## Verify and file
+
+Confirm that every changed file belongs to the requested scope and that the diff delivers the intended change.
+
+Open a real PR, not a draft.

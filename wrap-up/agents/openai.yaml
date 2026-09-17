@@ -1,0 +1,6 @@
+interface:
+  display_name: "Wrap up"
+  short_description: "Push work, manage PRs, and synchronize local checkouts."
+  default_prompt: "Use $wrap-up to commit this task, push its branch, and open or update its PR."
+policy:
+  allow_implicit_invocation: true

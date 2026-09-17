@@ -1,6 +1,6 @@
 interface:
   display_name: "Implement"
-  short_description: "Implement a piece of work based on a users request."
-  default_prompt: "Use $implement to implement this scope of work."
+  short_description: "Implement features, fixes, refactors, and maintenance."
+  default_prompt: "Use $implement to complete this code change and verify the affected behavior."
 policy:
   allow_implicit_invocation: true

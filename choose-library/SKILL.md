@@ -7,10 +7,15 @@ description: Apply preferred libraries while building, changing, optimizing, or 
 
 Use these curated defaults in development projects when the user and repository have not already chosen a library.
 
+## Choose within the project context
+
 1. Identify the capability behind the request. For implementation, optimization, or review work that does not name a library, inspect the affected code for relevant dependencies, components, and handmade patterns.
 2. Read every matching reference below. Each reference owns its library choices and nearby tradeoffs.
 3. Choose one mapped library when the reference gives a clear answer. Preserve an established competing dependency unless the user asks to replace it.
-4. When implementation is requested, use the repository's package manager and existing integration patterns. Ask before a library choice that materially changes the architecture. Proceed with established or easily reversible implementation details.
+
+## Consult the relevant references
+
+Read only the branches the task reaches. When the curated references do not cover the capability, make a normal project-aware choice and state that it falls outside the curated list.
 
 | Reference | Read when |
 | --- | --- |
@@ -25,4 +30,6 @@ Use these curated defaults in development projects when the user and repository 
 | [Data and performance](<references/Data and performance.md>) | Fetching or loading data, forms, throttling, debouncing, rate limiting, virtualization, long lists, or large tables |
 | [Common mismatches to catch](<references/Common mismatches to catch.md>) | Optimizing or reviewing a component, or replacing a handmade control, animation, list, class-name helper, or shared-state implementation |
 
-Read only the branches the task reaches. When the curated references do not cover the capability, make a normal project-aware choice and state that it falls outside the curated list.
+## Integrate when requested
+
+When implementation is requested, use the repository's package manager and existing integration patterns. Ask before a library choice that materially changes the architecture. Proceed with established or easily reversible implementation details.
