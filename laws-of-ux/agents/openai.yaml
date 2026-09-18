@@ -1,0 +1,5 @@
+interface:
+  display_name: "Laws of UX"
+  short_description: "Behavioral principles for interface decisions"
+policy:
+  allow_implicit_invocation: true

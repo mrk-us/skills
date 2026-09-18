@@ -1,0 +1,6 @@
+interface:
+  display_name: "Write Better"
+  short_description: "Grounded, restrained narrative nonfiction"
+  default_prompt: "Use $write-better to revise this text with concrete detail and restrained narrative momentum."
+policy:
+  allow_implicit_invocation: false

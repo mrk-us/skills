@@ -1,0 +1,6 @@
+interface:
+  display_name: "Add component reference"
+  short_description: "Add a portable example to the reference gallery"
+  default_prompt: "Use $add-component-reference to add the supplied component to my components-reference gallery, preserving its requested behavior and generating its reusable prompt."
+policy:
+  allow_implicit_invocation: true

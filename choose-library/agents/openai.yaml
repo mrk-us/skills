@@ -1,0 +1,5 @@
+interface:
+  display_name: "Choose library"
+  short_description: "Pick preferred libraries for web development tasks"
+policy:
+  allow_implicit_invocation: true

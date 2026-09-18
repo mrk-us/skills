@@ -1,0 +1,6 @@
+interface:
+  display_name: "Blast radius"
+  short_description: "Trace affected code and prove change safety"
+  default_prompt: "Use $blast-radius to trace what this change could break, test its key safety assumptions with real code, and report confirmed risks and unproven assumptions."
+policy:
+  allow_implicit_invocation: false

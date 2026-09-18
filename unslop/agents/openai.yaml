@@ -1,0 +1,6 @@
+interface:
+  display_name: "Unslop"
+  short_description: "Clean up comments, types, names, errors, and tests"
+  default_prompt: "Use $unslop to autonomously clean up comments, types, naming, error handling, and tests in the specified code while preserving required behavior and reporting every change."
+policy:
+  allow_implicit_invocation: true
