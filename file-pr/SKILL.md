@@ -1,6 +1,6 @@
 ---
 name: file-pr
-description: File a concise pull request. Use when the user asks to file, open, or create a PR.
+description: File a concise pull request. Use when the user asks to file a PR, open a PR, or create a PR.
 ---
 
 # File PR
@@ -43,7 +43,7 @@ Write a concise, human-readable title that states the problem solved or the usef
 
 ## Write the description
 
-Open the description with a simple summary, including the initial problem and what this PR added to solve it. Do not mention the prompt, user, assistant, chat, conversation, previous request, or instructions. Use ASD-STE100 Simplified Technical English:
+Open the description with a simple summary, including the initial problem and what this PR added to solve it. Do not mention the prompt, user, assistant, chat, conversation, previous request, or instructions. Do not include a created/generated with/by signature. Use ASD-STE100 Simplified Technical English:
 
 **BAD**
 

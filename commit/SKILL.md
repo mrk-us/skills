@@ -15,7 +15,7 @@ A commit-only request does not authorize pushing, amending existing commits, or 
 
 ## Group and stage changes
 
-Group changes by purpose, honoring the user's requested grouping. Use one commit for a coherent change; split unstaged work into separate commits when distinct messages clarify the history. Stage by file or hunk, keep required tests and documentation with each change, and commit dependencies first.
+Group changes by purpose, honoring the user's requested grouping. If the current thread only handles a single issue, commit all thread-relevant changes and ignore unrelated changes. If the thread handles multiple issues, use one commit for a coherent change; split unstaged work into separate commits when distinct messages clarify the history. Stage by file or hunk, keep required tests and documentation with each change, and commit dependencies first.
 
 ## Write the commit message
 
