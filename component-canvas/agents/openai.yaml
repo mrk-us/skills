@@ -1,0 +1,6 @@
+interface:
+  display_name: "Sol-loop"
+  short_description: "Build a dev-only canvas to explore UI components"
+  default_prompt: "Use $component-canvas to build a dev-only component canvas at /dev/components for the components I name, without changing their source."
+policy:
+  allow_implicit_invocation: true

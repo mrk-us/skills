@@ -1,0 +1,6 @@
+interface:
+  display_name: "Clean copy"
+  short_description: "Use when the user says 'sol loop'"
+  default_prompt: "Use $sol-loop to review."
+policy:
+  allow_implicit_invocation: true
