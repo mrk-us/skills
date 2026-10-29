@@ -15,6 +15,7 @@ bunx skills add https://github.com/mrk-us/skills
 | [add-component-reference](add-component-reference/SKILL.md) | Add self-contained UI or animation examples to the components-reference gallery, including registration and reusable agent prompts. |
 | [blast-radius](blast-radius/SKILL.md) | Trace what a change could break beyond the diff and verify the key safety assumption by running real code. |
 | [choose-library](choose-library/SKILL.md) | Choose preferred libraries for web and app development, including UI, state, data fetching, animation, and AI. |
+| [clean-copy](clean-copy/SKILL.md) | Cut redundant labels, unnecessary hints, and fixed-bug warnings when writing or reviewing interface copy. |
 | [code-review](code-review/SKILL.md) | Review code for actionable bugs, regressions, security issues, type-safety defects, and error-handling failures without editing by default. |
 | [commit](commit/SKILL.md) | Review, group, and commit local Git changes with clear messages and relevant checks. |
 | [debug-motion](debug-motion/SKILL.md) | Diagnose and fix animations that replay, reset, jump, flash, or stutter while preserving intended motion and layout. |
