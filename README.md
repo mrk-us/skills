@@ -18,6 +18,7 @@ bunx skills add https://github.com/mrk-us/skills
 | [clean-copy](clean-copy/SKILL.md) | Cut redundant labels, unnecessary hints, and fixed-bug warnings when writing or reviewing interface copy. |
 | [code-review](code-review/SKILL.md) | Review code for actionable bugs, regressions, security issues, type-safety defects, and error-handling failures without editing by default. |
 | [commit](commit/SKILL.md) | Review, group, and commit local Git changes with clear messages and relevant checks. |
+| [component-canvas](component-canvas/SKILL.md) | Build a persistent, dev-only canvas page for exploring existing UI components and variants with pan, zoom, and per-component isolation. |
 | [debug-motion](debug-motion/SKILL.md) | Diagnose and fix animations that replay, reset, jump, flash, or stutter while preserving intended motion and layout. |
 | [file-pr](file-pr/SKILL.md) | Create or update concise pull requests that explain the problem, resulting behavior, and validation. |
 | [file-structure](file-structure/SKILL.md) | Organize code around features and actual ownership, keeping local logic nearby and sharing only where justified. |
