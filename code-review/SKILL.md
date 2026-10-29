@@ -5,7 +5,7 @@ description: >-
   error-handling failures when a code-quality assessment or actionable review
   findings are requested. Report findings without editing by default. Exclude
   explanation-only and change-summary requests. Use unslop for autonomous
-  non-bug cleanup.
+  non-bug cleanup. Use when user asks for a `code review` or `review code`.
 ---
 
 # Code review
