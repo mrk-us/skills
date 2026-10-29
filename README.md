@@ -26,6 +26,7 @@ bunx skills add https://github.com/mrk-us/skills
 | [microcopy](microcopy/SKILL.md) | Write, review, and implement interface text such as labels, buttons, hints, errors, and empty states. |
 | [new-dev-project](new-dev-project/SKILL.md) | Scaffold new apps and marketing sites in `~/Dev` with `bunx @mrk-us/create-app` and guide stack choices. |
 | [park-that](park-that/SKILL.md) | Defer a specific line of work with a clear continuation reminder while preserving the active task. |
+| [sol-loop](sol-loop/SKILL.md) | Review code changes in a bounded GPT Sol loop when the user says "sol loop". |
 | [unslop](unslop/SKILL.md) | Clean up comments, types, naming, error handling, and tests while preserving required behavior and public contracts. |
 | [wrap-up](wrap-up/SKILL.md) | Finish authorized Git work by pushing branches, managing pull requests, merging, and synchronizing local checkouts. |
 | [write-better](write-better/SKILL.md) | Draft or revise prose in a grounded narrative nonfiction style when explicitly invoked. |
