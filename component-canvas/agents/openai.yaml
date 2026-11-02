@@ -1,5 +1,5 @@
 interface:
-  display_name: "component-canvas"
+  display_name: "Component canvas"
   short_description: "Build a dev-only canvas to explore UI components"
   default_prompt: "Use $component-canvas to build a dev-only component canvas at /dev/components for the components I name, without changing their source."
 policy:
