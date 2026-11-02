@@ -1,6 +1,12 @@
 ---
 name: clean-copy
-description: Cut interface copy that shouldn't exist — captions that restate a label, hints that pre-empt a worry the user never had, warnings that are scar tissue from a fixed bug. Use when writing or reviewing any user-facing string (labels, hints, empty states, toasts, confirmations, button text), or when asked to clean up / tighten copy.
+description: >-
+  Cut interface copy that shouldn't exist: captions that restate a label,
+  hints that pre-empt a worry the user never had, warnings that are scar
+  tissue from a fixed bug. Use when writing or reviewing any user-facing
+  string (labels, hints, empty states, toasts, confirmations, button text),
+  or when asked to clean up or tighten copy. Use microcopy to word the copy
+  that stays.
 ---
 
 # Cleaning copy
