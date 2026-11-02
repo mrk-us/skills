@@ -1,6 +1,6 @@
 ---
 name: sol-loop
-description: Use when the user says "sol loop".
+description: Review code changes with GPT Sol in a bounded loop, fixing agreed findings between rounds until Sol approves or the budget ends. Use only when the user says "sol loop".
 ---
 
 # sol-loop

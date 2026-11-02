@@ -1,6 +1,6 @@
 interface:
-  display_name: "sol-loop"
-  short_description: "Use when the user says 'sol loop'"
+  display_name: "Sol loop"
+  short_description: "Review changes with GPT Sol in a bounded loop"
   default_prompt: "Use $sol-loop to review."
 policy:
   allow_implicit_invocation: true
