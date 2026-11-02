@@ -1,5 +1,5 @@
 interface:
-  display_name: "Clean copy"
+  display_name: "sol-loop"
   short_description: "Use when the user says 'sol loop'"
   default_prompt: "Use $sol-loop to review."
 policy:
