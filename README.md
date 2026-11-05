@@ -29,5 +29,5 @@ bunx skills add https://github.com/mrk-us/skills
 | [park-that](park-that/SKILL.md) | Defer a specific line of work with a clear continuation reminder while preserving the active task. |
 | [sol-loop](sol-loop/SKILL.md) | Review code changes in a bounded GPT Sol loop when the user says "sol loop". |
 | [unslop](unslop/SKILL.md) | Clean up comments, types, naming, error handling, and tests while preserving required behavior and public contracts. |
-| [wrap-up](wrap-up/SKILL.md) | Finish authorized Git work by pushing branches, managing pull requests, merging, and synchronizing local checkouts. |
+| [wrap-up](wrap-up/SKILL.md) | Clean up task worktrees, branches, and local servers, and synchronize the local checkout. |
 | [write-better](write-better/SKILL.md) | Draft or revise prose in a grounded narrative nonfiction style when explicitly invoked. |

@@ -59,4 +59,4 @@ Run checks appropriate to the changed behavior and complete the repository's req
 
 Fix failures caused by the change and rerun affected checks. If completion is blocked by unrelated work or unavailable services, explain the blocker and what remains unverified.
 
-Summarize the changed behavior, checks run, and remaining gaps. When committing is part of the authorized task, follow [commit](../commit/SKILL.md). For an authorized push, PR, merge, or local synchronization, follow [wrap-up](../wrap-up/SKILL.md) through the requested endpoint.
+Summarize the changed behavior, checks run, and remaining gaps. When committing is part of the authorized task, follow [commit](../commit/SKILL.md). For a requested PR, follow [file-pr](../file-pr/SKILL.md). Use [wrap-up](../wrap-up/SKILL.md) for requested task cleanup or local synchronization.

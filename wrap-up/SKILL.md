@@ -1,47 +1,29 @@
 ---
 name: wrap-up
 description: >-
-  Finish Git work by pushing branches, creating or updating PRs, merging when
-  authorized, and synchronizing local checkouts. Use for requested Git follow-through.
+  Clean up task worktrees, branches, and local servers, and synchronize the local
+  checkout when the user asks to wrap up or sync local.
 ---
 
 # Wrap up
 
-Carry the current task through the requested Git endpoint. Reuse scope, destinations, and authorization established in the conversation. Complete necessary intermediate steps without asking again.
+Clean up the current task's resources and synchronize the original local checkout. A wrap-up request authorizes the cleanup below, including switching off the finished task branch when needed. Reuse destinations and decisions already established in the conversation. A sync-only request stays limited to synchronization.
 
-## Choose the requested endpoint
+Commit, push, review, PR creation, merging, and deployment require their own requests. Wrap-up does not add those operations.
 
-A specific request controls which operations to perform. A push-only or sync-only request stays that size. When explicitly invoked as `$wrap-up` without a narrower endpoint, commit the current task's changes, push its branch, and open or update a non-draft PR. Merging, switching branches, deployment, and cleanup remain conditional on the requested scope.
+## Synchronize local
 
-Keep reset, stash, force-push, and branch/worktree deletion outside the workflow unless specifically authorized.
+Verify the repository, remote, task branch, PR state, original checkout, and other worktrees. Fetch relevant remote refs. Use the requested synchronization destination or established PR base; ask only if the destination is materially ambiguous.
 
-For a request to push the current task branch:
+Update the actual local branch and checkout with a fast-forward when possible. Preserve local commits and uncommitted work. If they prevent synchronization, leave them intact, report the divergence, and continue independent cleanup. Leave unrelated active checkouts in place.
 
-**BAD**
+## Clean up
 
-> Push the branch, merge its PR, and delete the worktree.
+- Remove the task's clean worktrees and local branches once all their work is verified as preserved on a remote branch or included in a merged PR. Check for local files that need preserving before removing a worktree.
+- Delete the task's remote branch only after confirming its work was merged. Retain branches backing open PRs. For squash merges, verify the merged PR and its contents rather than relying on Git ancestry alone.
+- Preserve uncommitted work, unique local commits, shared resources, and anything still needed for requested testing or linked evidence. Retain affected resources and explain why when deletion would lose work.
+- Stop the current task's local servers unless the user asked to keep a preview running. Remove disposable task-owned temporary files.
 
-**GOOD**
+## Verify and report
 
-> Push the intended branch and confirm the remote commit.
-
-## Establish the target
-
-Inspect the repository, remotes, current branch and HEAD, working-tree changes, and relevant worktrees. Identify the task's changes and intended PR base or synchronization source from the request and repository guidance. Preserve unrelated work and use the existing task branch or worktree where appropriate.
-
-Refresh relevant remote refs and inspect ancestry and ahead/behind state. Distinguish updating a local clone from promoting changes between remote branches. Resolve a materially ambiguous destination before changing it; do not assume every repository uses `main` or deploys from its default branch.
-
-## Complete the requested operations
-
-- **Commit:** use [commit](../commit/SKILL.md) for scoped staging, grouping, messages, checks, and hooks. Create a task branch first when the current branch is not an allowed commit destination.
-- **Push:** publish the intended branch to its verified remote and confirm the remote SHA. If the remote has advanced, fetch and inspect the divergence before reconciling it under the repository's policy and current authorization.
-- **PR:** use [file-pr](../file-pr/SKILL.md), including contribution guidance and required evidence. Collect evidence with authorized tools; if capture is blocked, continue independent preparation and identify the missing evidence or permission. Update an existing PR for the intended head and base instead of creating a duplicate. Leave it open when filing is the requested endpoint, reporting pending checks without implying merge readiness.
-- **Review and merge:** use [code-review](../code-review/SKILL.md) when a review is requested or required. Merge only when authorized and the required checks and reviews pass for the current PR head. Use a head-SHA precondition where supported so another push cannot substitute unverified work. Follow the repository's merge policy and verify that the PR actually merged. Always Squash Merge.
-- **Local synchronization:** update the requested clone and local branch from the intended remote branch, checking other worktrees before moving branch pointers. Prefer a fast-forward. Preserve local commits and uncommitted work; investigate divergence and resolve it within the authorized scope. Switch the active checkout only when requested. Updating remote-tracking refs alone does not update a local checkout.
-- **Clean up:** delete local and remote branches after branch merging, delete local worktrees, and any temporary files associated with tasks. Kill any dev servers related to the current task/thread. Provide in output what was done and why.
-
-## Verify and hand off
-
-Reuse valid verification from the implementation or commit stage. Repeat checks when the content, integration result, or relevant environment changes, or when repository policy requires them.
-
-Report the requested endpoint with its evidence: pushed branch and commit, PR URL and state, and each synchronized clone's path, local branch, HEAD, and relation to its remote. Identify remaining changes, divergence, or pending checks. Claim deployment success only after verifying the deployment when it is part of the request.
+Confirm the resulting checkout, branch, worktree, and server state. Report the local checkout's path, branch, HEAD, and ahead/behind relation to its remote, plus what was removed or retained and why. Describe any remaining gap explicitly instead of calling a divergent checkout fully synced.
