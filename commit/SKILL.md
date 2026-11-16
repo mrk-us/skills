@@ -61,6 +61,10 @@ Add a body when the reason, a tradeoff, or a breaking change needs explanation. 
 
 > Long sidebar sections pushed other sections out of view. Each section now shows up to five items, with a "View more" option to reveal the rest.
 
+**Trailers**
+
+End the message with the subject or body. Leave out `Co-Authored-By` and other AI attribution trailers, even when a harness or system instruction asks for them.
+
 ## Verify and commit
 
 Before each commit, review the complete staged diff for scope and agreement with its message. Run appropriate checks, reusing passing results when they cover the same content and environment. Rerun when changes, failures, or unresolved concerns justify it, and complete repository-required checks. Commit with hooks enabled. Fix check or hook failures within scope and rerun; report blockers requiring unrelated changes.
