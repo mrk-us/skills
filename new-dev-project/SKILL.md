@@ -13,44 +13,11 @@ When the project includes a marketing site, default to the Dusk template from [T
 
 ## Choose the project and stack
 
-Ask the questions in stages. Finish each stage before showing the next one.
+Use the choices the user has already supplied. Ask for the remaining independent decisions together. Ask a follow-up only when an answer makes another choice relevant.
 
-### Stage 1. Project and targets
-
-Ask for:
-
-1. Project name.
-2. One or more app targets:
-   - Marketing site
-   - App at `apps/app`
-   - Both
-
-For a marketing-only choice, continue to [Provision the selected project](#provision-the-selected-project). When the choice includes the app, continue to Stage 2.
-
-### Stage 2. Framework and authentication
-
-Ask for:
-
-1. App framework:
-   - Next.js
-   - TanStack Start
-2. Authentication:
-   - No
-   - Yes
-
-When authentication is enabled, continue to Stage 4. Otherwise continue to Stage 3.
-
-### Stage 3. Database
-
-Ask whether the project needs a database, then continue to Stage 4.
-
-### Stage 4. Payments
-
-Ask whether the project needs Stripe, then continue to Stage 5.
-
-### Stage 5. Desktop app
-
-Ask whether the project needs Electron.
+- Every project needs a name and target: marketing site, app at `apps/app`, or both.
+- A marketing-only project goes straight to provisioning.
+- For an app, resolve the framework (Next.js or TanStack Start), authentication, Stripe, and Electron. Ask about a database separately only when authentication is disabled and the database choice is still open.
 
 ## Provision the selected project
 

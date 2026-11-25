@@ -1,0 +1,6 @@
+interface:
+  display_name: "Debug loop"
+  short_description: "Fix confirmed bugs with independent rechecks"
+  default_prompt: "Use $debug-loop to fix confirmed bugs and have the reviewer recheck the changes."
+policy:
+  allow_implicit_invocation: true

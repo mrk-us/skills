@@ -17,7 +17,7 @@ A cleanup request authorizes corrections within the selected scope. Honor read-o
 
 Use this skill when slop removal or code cleanup is requested. Answer explanation and change-summary requests directly. A request to review code for bugs does not authorize this cleanup workflow.
 
-For a combined cleanup and review request, complete cleanup first, then use [code-review](../code-review/SKILL.md) on the resulting code and follow its combined output format. A standalone cleanup does not require a separate bug review.
+For a combined cleanup and review request, complete cleanup first, then use [code-review](../code-review/SKILL.md) on the resulting code. Report applied cleanup and the read-only bug findings in separate sections. A standalone cleanup does not require a separate bug review.
 
 ## Establish the scope
 
@@ -219,7 +219,7 @@ When describing problems, be concrete.
 
 > order-labels.ts:18 creates temporary objects only to read their label field in a second map.
 
-For combined cleanup and review, pass these concerns and cleanup results into code-review's combined report instead of producing a second report.
+For combined cleanup and review, include confirmed bugs from the read-only review after the cleanup results in the same response.
 
 ```
 

@@ -12,7 +12,7 @@ Complete the requested code change through implementation, relevant verification
 
 ## Working context
 
-For a new task without an assigned task worktree, fetch `origin` and create a new worktree and branch from `origin/main`. Name the branch `<type>/<short-kebab-description>`, for example `feat/sidebar-preview` or `fix/invoice-total`. Choose an unused branch name and a worktree path outside the current checkout. Work from that directory and verify its branch before editing. Preserve existing changes. Reuse the existing worktree and branch when continuing the same task or when the host has already assigned them to this task.
+For a new task without an assigned worktree, create a separate worktree and branch. Use the base the user named, or the local revision containing work this task depends on. For independent work, fetch the intended remote and resolve its default branch. For a local-only repository, use its local default branch. Verify the chosen revision before creating the worktree. Name the branch `<type>/<short-kebab-description>`, for example `feat/sidebar-preview` or `fix/invoice-total`. Choose an unused branch name and a worktree path outside the current checkout. Work from that directory and verify its branch before editing. Preserve existing changes. Reuse the existing worktree and branch when continuing the same task or when the host has already assigned them to this task.
 
 Choose the type that matches the task's main purpose. Common types are:
 
@@ -30,7 +30,7 @@ Choose the type that matches the task's main purpose. Common types are:
 
 ## Approach
 
-Use [file-structure](../file-structure/SKILL.md) when implementing or refactoring features, or when creating, moving, or extracting files and helpers. Apply its ownership guidance within the requested scope and existing repository conventions.
+Use [file-structure](../file-structure/SKILL.md) only when working in a TypeScript project and the change requires deciding where a file or helper belongs, including when creating, moving, or extracting one. Apply its ownership guidance within the requested scope and existing repository conventions.
 
 Apply the distinctions relevant to the change; a task can span several kinds of work.
 

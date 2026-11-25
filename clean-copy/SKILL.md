@@ -1,10 +1,6 @@
 ---
 name: clean-copy
-description: >-
-  Use when writing or reviewing any user-facing
-  string (labels, hints, empty states, toasts, confirmations, button text),
-  or when asked to clean up or tighten copy. Use microcopy to word the copy
-  that stays.
+description: Prune redundant or distracting interface text when the task calls for deciding which labels, hints, or messages to cut or tighten.
 ---
 
 # Cleaning copy

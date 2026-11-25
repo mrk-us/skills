@@ -1,32 +1,11 @@
 ---
 name: code-review
-description: >-
-  Review code for bugs, regressions, security issues, type-safety defects, and
-  error-handling failures when a code-quality assessment or actionable review
-  findings are requested. Report findings without editing by default. Exclude
-  explanation-only and change-summary requests. Use unslop for autonomous
-  non-bug cleanup. Use when user asks for a `code review` or `review code`.
+description: Review code or a PR and list all substantiated bugs in scope, with severity, evidence, and coverage. Read-only.
 ---
 
 # Code review
 
-Find actionable defects in the selected code and explain their concrete consequences. Review correctness, security, type safety, error handling, and required behavior. Report bugs without modifying the reviewed code unless the user explicitly requests fixes.
-
-A demonstrated loss of type checking, debugging information, or accurate user-facing error behavior can be a finding without an observed runtime crash. Cosmetic type preferences, comment hygiene, and naming cleanup belong to [unslop](../unslop/SKILL.md).
-
-## Decide whether a review is needed
-
-Choose by the requested deliverable. Reading code or a diff, inspecting a PR, or investigating a branch does not by itself call for a code review. Use this skill for a requested code-quality assessment or a review required by repository instructions.
-
-| Request                                                | Handling                                                                          |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------- |
-| "What does this branch touch? What's changed?"         | Explain affected areas and behavior changes without applying this workflow.       |
-| "Investigate this PR and summarize its functionality." | Trace and summarize the functionality without applying this workflow.             |
-| "Review this PR for bugs."                             | Review the code and report actionable findings.                                   |
-| "Remove slop from these changes."                      | Use unslop for the requested cleanup.                                             |
-| "Clean up and review these changes."                   | Run unslop first, then review the resulting code and produce the combined report. |
-
-For a combined summary and review request, apply this workflow only to the requested assessment. Invoke unslop only when cleanup is part of the request, not merely because a review finds slop.
+Use this skill for a requested correctness review. Inspect the selected snapshot and report every substantiated in-scope bug. Keep the reviewed files unchanged. When called from a repair workflow, return findings to the owner for disposition. A cleanup or change summary is a separate deliverable.
 
 ## Establish the scope
 
@@ -43,36 +22,13 @@ Exclude unrelated work and, in PR or commit mode, uncommitted changes unless req
 
 Enumerate every scoped file and logical change, including named files with no diff. Trace affected callers, consumers, tests, configuration, and data contracts, including unchanged code. Inspect relevant neighboring code and follow inputs, state, side effects, and failure paths across those boundaries. Apply repository standards over general preferences.
 
-Use the [blast-radius](../blast-radius/SKILL.md) skill for impact analysis within this scope. Merge its evidence into this skill's output. If it or a referenced helper is unavailable, inspect affected paths directly and state any limits. Keep verification within the user's authorization; use temporary checks without changing reviewed files for a read-only review.
-
-Identify affected paths before assessing bugs, and revisit the file selection when a finding exposes another affected consumer. Inspecting a dependency does not expand the review into unrelated pre-existing issues.
-
-## Current and recommended changes
-
-Apply every question below to both the code being reviewed and every change recommended to that code during this review. This includes suggested bug fixes and recommendations left unapplied. Evaluate each recommendation before reporting it and each authorized fix before applying it.
-
-- Does this solve the actual problem and preserve required behavior?
-- Does this leave the codebase better off than when you found it?
-- Is this the simplest solution within the existing design?
-- Can this be achieved in less code?
-- Does each new abstraction, dependency, fallback, and test earn its place?
-
-Judge simplicity by ease of understanding and maintenance. Recommend fewer lines only when they preserve intent and useful safeguards. Prefer the smallest correction that addresses the demonstrated defect; adequate code needs no finding.
+Use the deeper [blast-radius procedure](../blast-radius/SKILL.md) for a requested full audit or a material assumption that crosses a boundary, such as persisted data compatibility or a change in who may call an operation. Follow any affected path beyond the diff while keeping findings within the selected scope.
 
 ## Review the code
 
 Inspect every scoped file and logical change. Compare the implementation with accepted requirements and, for a change review, its prior behavior. Check required behavior, regressions, and unnecessary scope additions. Investigate security vulnerabilities first, then other correctness failures.
 
-For every scoped file and relevant affected path, identify:
-
-- All user inputs (request params, headers, body, URL components)
-- All database queries
-- All authentication/authorization checks
-- All session/state operations
-- All external calls
-- All cryptographic operations
-
-Assess every checklist item and the focused review areas below for applicability. Record each as **Issue found**, **Checked**, **Not applicable**, or **Unverified**, with brief supporting evidence or a reason. **Checked** means assessed using the stated evidence, not necessarily exercised at runtime.
+Use the areas below where they apply. For a requested full audit or a material cross-boundary risk, keep a coverage ledger for the audited scope: issue found, checked, not applicable, or unverified, with the evidence or reason. For ordinary reviews, summarize the scope, checks, and material gaps.
 
 ### Security and business logic
 
@@ -150,7 +106,7 @@ For each candidate finding:
 1. Establish the trigger, affected execution path, expected behavior, actual consequence, and relevant file locations.
 2. Check whether the issue is handled elsewhere, including unchanged middleware, callers, boundary validation, or database constraints.
 3. Inspect existing tests and run a focused reproduction or check when it materially improves confidence. Use the actual pinned dependency or its source when the claim depends on library behavior.
-4. Reconcile the proposed fix with the questions in **Current and recommended changes** and check its affected consumers.
+4. Check affected consumers before suggesting the smallest correction that would address the defect.
 5. Discard disproven, unsupported, duplicate, and unrelated findings. Keep unresolved material concerns as verification gaps rather than counting them as confirmed bugs.
 
 For change reviews, distinguish defects introduced or exposed by the changes from unrelated pre-existing issues. For named-file reviews, assess the requested code even when it has no recent diff. Report each root cause once, listing its affected locations.
@@ -170,78 +126,6 @@ An unsafe-looking pattern or theoretical worst case alone does not justify sever
 
 ## Output
 
-Use a short opening summary followed by **Bugs**. Count unique files actually reviewed, including relevant affected files, and each distinct confirmed bug once. Severity counts must equal the total. Keep the section when there are no findings.
+List every confirmed bug once, highest severity first. Give each a stable ID, severity, file and line, trigger, expected and actual behavior, and supporting evidence. Include a brief corrective direction where useful. Keep IDs across rechecks and identify the revision or working-tree changes covered.
 
-```markdown
-Reviewed [N] files; found [B] bugs ([C] Critical, [H] High, [Md] Medium, [L] Low).
-
-## Bugs
-
-Found [B] bugs across [F] files.
-
-| #                    | File      | Severity                 | References                                    |
-| -------------------- | --------- | ------------------------ | --------------------------------------------- |
-| [#](link-to-section) | File:Line | Critical/High/Medium/Low | Supporting code, test, or applicable standard |
-
-[Detailed breakdown of each bug seperated by a divider `---`]
-
-[Brief scope, checklist coverage, checks run, and verification gaps.]
-```
-
-For each bug, use the following format. Link file locations and relevant supporting sources. Omit unsupported standards references rather than inventing them.
-
-````markdown
-[#]. [Single sentence description]
-
-File:Line
-
-**Problem**: What's wrong and its concrete consequence.
-
-```[code_format]
-[offending code (truncated if long)]
-```
-````
-
-**Fix**: The smallest recommended correction, assessed against Current and recommended changes.
-
-```[code_format]
-[fixed code]
-```
-
-**Evidence**: The trigger, affected path, and evidence establishing the defect. State whether the evidence is static inspection, a compiler check, a test, or a live reproduction.
-
-````
-
-Keep scope and verification notes inside **Bugs**. Report coverage compactly using the recorded statuses; do not turn unverified areas into clean results. When fixes were explicitly requested, state what was applied and verified without presenting it as an unresolved bug.
-
-### Combined cleanup and review
-
-When the user requests both tasks, run unslop first and review the resulting code. Validate any suspected bugs from cleanup against that result. Produce one report using this structure and the respective per-entry formats:
-
-```markdown
-Reviewed [N] files; made [M] changes; found [B] bugs ([C] Critical, [H] High, [Md] Medium, [L] Low).
-
-## Slop
-
-| #                    | File      | Category                           |
-| -------------------- | --------- | ---------------------------------- |
-| [#](link-to-section) | File:Line | Comments/Types/Naming/Errors/Tests |
-
-[Very short summary of slop found and changes made.]
-
-[Autonomous-change entries from unslop.]
-
-## Bugs
-
-| #                    | File      | Severity                 | References                                    |
-| -------------------- | --------- | ------------------------ | --------------------------------------------- |
-| [#](link-to-section) | File:Line | Critical/High/Medium/Low | Supporting code, test, or applicable standard |
-
-Found [B] bugs across [F] files.
-
-[Bug entries ordered from Critical to Low.]
-
-[Brief scope, checklist coverage, checks run, and verification gaps.]
-````
-
-Count unique files across both tasks, not the sum of overlapping file counts. Count logical changes actually applied, not edited lines or unapplied recommendations. Count bug-affected files once. Keep both sections when a count is zero. Keep cleanup verification alongside the other verification notes in **Bugs**.
+State what was reviewed, which checks ran, and any material gaps. If no bug is confirmed, say so. For a partial review, identify what remains unassessed. Return the findings directly to the requester.

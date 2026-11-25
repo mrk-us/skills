@@ -1,7 +1,7 @@
 ---
 name: microcopy
-description: >-
-  Write, review, and implement microcopy for digital interfaces. Use for UX work and when writing UX copy or designing, building, reviewing, or implementing an app, website, user flow, screen, component, form, settings panel, onboarding, checkout, or other UI that contains or introduces user-facing text, including labels, buttons, hints, errors, confirmations, empty states, loading states, permissions, and notifications. Apply only to the requested or changed surface unless the user asks for a wider copy review.
+description: Write or revise interface wording when the user explicitly invokes $microcopy.
+disable-model-invocation: true
 ---
 
 # Microcopy

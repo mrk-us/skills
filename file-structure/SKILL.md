@@ -1,6 +1,6 @@
 ---
 name: file-structure
-description: Organize code by feature and actual ownership during implementation, refactoring, and requested reorganization. Use when creating, placing, moving, or extracting files and helpers. Keep single-use logic local, preserve self-contained examples, and share only for a real common responsibility or meaningful boundary.
+description: Organize code in TypeScript projects by feature and actual ownership during implementation, refactoring, and requested reorganization. Use when creating, placing, moving, or extracting files and helpers. Keep single-use logic local, preserve self-contained examples, and share only for a real common responsibility or meaningful boundary.
 ---
 
 # File structure
