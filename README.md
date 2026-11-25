@@ -29,6 +29,8 @@ bunx skills add https://github.com/mrk-us/skills
 | [new-dev-project](new-dev-project/SKILL.md) | Scaffold new apps and marketing sites in `~/Dev` with `bunx @mrk-us/create-app` and guide stack choices. |
 | [own-this](own-this/SKILL.md) | Coordinate delegated deliverables, give feedback against the brief, and verify the integrated result. |
 | [park-that](park-that/SKILL.md) | Defer a specific line of work with a clear continuation reminder while preserving the active task. |
+| [playtest](playtest/SKILL.md) | Explicitly invoke to set up, exercise, and hand back a repeatable gameplay scenario. |
+| [trace-feature](trace-feature/SKILL.md) | Trace one feature to its implementation and identify reusable pieces with source evidence. |
 | [unslop](unslop/SKILL.md) | Clean up comments, types, naming, error handling, and tests while preserving required behavior and public contracts. |
 | [wrap-up](wrap-up/SKILL.md) | Clean up task worktrees, branches, and local servers, and synchronize the local checkout. |
 | [write-better](write-better/SKILL.md) | Draft or revise prose in a grounded narrative nonfiction style when explicitly invoked. |

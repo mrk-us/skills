@@ -1,0 +1,6 @@
+interface:
+  display_name: "Playtest"
+  short_description: "Set up a repeatable gameplay moment"
+  default_prompt: "Use $playtest to put me just before the encounter and verify I can try it again."
+policy:
+  allow_implicit_invocation: false

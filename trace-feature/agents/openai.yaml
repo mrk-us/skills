@@ -1,0 +1,4 @@
+interface:
+  display_name: "Trace feature"
+  short_description: "Find what powers one repository feature"
+  default_prompt: "Use $trace-feature to show what powers this feature and which pieces I could reuse."
