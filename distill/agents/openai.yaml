@@ -1,0 +1,4 @@
+interface:
+  display_name: "Distill"
+  short_description: "Reduce any text or new answer to its essentials"
+  default_prompt: "Use $distill to give me the essentials."

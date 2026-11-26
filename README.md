@@ -21,6 +21,7 @@ bunx skills add https://github.com/mrk-us/skills
 | [component-canvas](component-canvas/SKILL.md) | Build a persistent, dev-only canvas page for exploring existing UI components and variants with pan, zoom, and per-component isolation. |
 | [debug-loop](debug-loop/SKILL.md) | Fix confirmed bugs and have an independent reviewer recheck the changes in a bounded loop. |
 | [debug-motion](debug-motion/SKILL.md) | Diagnose and fix animations that replay, reset, jump, flash, or stutter while preserving intended motion and layout. |
+| [distill](distill/SKILL.md) | Condense any referenced text or a new answer to what the reader needs. |
 | [file-pr](file-pr/SKILL.md) | Create or update concise pull requests that explain the problem, resulting behavior, and validation. |
 | [file-structure](file-structure/SKILL.md) | Organize TypeScript projects around features and actual ownership, keeping local logic nearby and sharing only where justified. |
 | [implement](implement/SKILL.md) | Complete features, bug fixes, refactors, and maintenance changes through relevant verification. |
