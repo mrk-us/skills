@@ -27,11 +27,14 @@ For two independently reusable component examples:
 
 Before extracting, identify the current consumers, the responsibility they share, and whether they should change together. A second call site is evidence of reuse, not an automatic instruction to share. Similar syntax, generic naming, and "might be useful later" are insufficient. A deliberate API, policy, or dependency boundary can justify a single-consumer abstraction when it solves a present problem.
 
+A *contract* is the exception: a constant, type, schema, error code, protocol path, header or limit that two places must agree on has one owner from its second consumer onward. Before defining one, search the repository for its name and its value, and import the owner you find. When a consumer can't import the owner, such as another package, a Worker or the app, move the definition to the lowest package every consumer can import and import it from there on both sides.
+
 | Actual responsibility                                           | Default location                                           |
 | --------------------------------------------------------------- | ---------------------------------------------------------- |
 | One component or standalone example                             | Its existing file or nearby folder                         |
 | Multiple consumers within one feature sharing the same behavior | That feature's existing components, hooks, or utility area |
 | Multiple features relying on one domain rule or contract        | The domain owner or an existing shared boundary            |
+| A contract several packages or runtimes must agree on           | The lowest shared package every consumer can import        |
 | A deliberately reusable design-system primitive                 | The established UI package or primitive directory          |
 
 Use established repository names. A feature may own components, hooks, utilities, and types, but create only the folders needed. Keep legitimate domain dependencies explicit; do not move domain code to a generic `shared` directory just because several features import it.
