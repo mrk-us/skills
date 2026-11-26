@@ -24,6 +24,7 @@ bunx skills add https://github.com/mrk-us/skills
 | [distill](distill/SKILL.md) | Condense any referenced text or a new answer to what the reader needs. |
 | [file-pr](file-pr/SKILL.md) | Create or update concise pull requests that explain the problem, resulting behavior, and validation. |
 | [file-structure](file-structure/SKILL.md) | Organize TypeScript projects around features and actual ownership, keeping local logic nearby and sharing only where justified. |
+| [find-problems](find-problems/SKILL.md) | Find recurring work in local and exported AI chats from any provider and pitch distinct products with evidence and a first test. |
 | [implement](implement/SKILL.md) | Complete features, bug fixes, refactors, and maintenance changes through relevant verification. |
 | [laws-of-ux](laws-of-ux/SKILL.md) | Apply behavioral psychology and Laws of UX to interface design, user flows, implementation, and reviews. |
 | [microcopy](microcopy/SKILL.md) | Explicitly invoke to write or revise interface wording. |
